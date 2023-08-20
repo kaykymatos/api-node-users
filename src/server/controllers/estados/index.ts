@@ -11,4 +11,3 @@ export const EstadosController = {
   ...getByIdEstado,
   ...deleteEstado,
 };
-

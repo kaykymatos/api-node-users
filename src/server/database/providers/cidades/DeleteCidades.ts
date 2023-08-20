@@ -1,4 +1,4 @@
-export const DeleteEstados = async (id: number): Promise<void | Error> => {
+export const DeleteCidades = async (id: number): Promise<void | Error> => {
   try {
     return;
   } catch (error) {

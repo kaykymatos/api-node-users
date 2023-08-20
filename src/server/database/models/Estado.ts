@@ -1,5 +1,5 @@
-export interface IEstado{
-  id:number;
-  nome:string;
-  uf:string;
+export interface IEstado {
+  id: number;
+  nome: string;
+  uf: string;
 }

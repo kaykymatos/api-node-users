@@ -1,7 +1,7 @@
-import { IEstado } from '../../models/Estado';
+import { ICidade } from '../../models/Cidade';
 
-export const CreateEstados = async (
-  estado: Omit<IEstado, 'id'>
+export const CreateCidades = async (
+  cidade: Omit<ICidade, 'id'>
 ): Promise<number | Error> => {
   try {
     return 1;

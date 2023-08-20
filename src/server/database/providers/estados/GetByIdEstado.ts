@@ -1,6 +1,6 @@
 import { IEstado } from '../../models/Estado';
 
-export const GetByIdEstados = async (id:number): Promise<IEstado | Error> => {
+export const GetByIdEstados = async (id: number): Promise<IEstado | Error> => {
   try {
     return {} as IEstado;
   } catch (error) {
@@ -8,4 +8,3 @@ export const GetByIdEstados = async (id:number): Promise<IEstado | Error> => {
     return new Error('Erro ao cadastrar registro');
   }
 };
-
