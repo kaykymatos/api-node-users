@@ -40,7 +40,7 @@ export const UpdateCidades = async (
   const result = await CidadesProvider.UpdateCidades(req.params.id, req.body);
   if (result instanceof Error)
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { EstadosController } from '../controllers/estados';
 import { CidadesController } from '../controllers/cidades';
+import { PessoasController } from '../controllers/pessoas';
 
 const routes = Router();
 //Estados
@@ -50,5 +51,29 @@ routes.delete(
   CidadesController.DeleteCidades
 );
 
+
+
+//Pessoas
+routes.get('/api/v1/pessoas/get-all', PessoasController.GetAllPessoas);
+routes.get(
+  '/api/v1/pessoas/get-by-id/:id',
+  PessoasController.GetByIdValidation,
+  PessoasController.GetByIdPessoas
+);
+routes.post(
+  '/api/v1/pessoas/create',
+  PessoasController.CreateValidation,
+  PessoasController.CreatePessoas
+);
+routes.put(
+  '/api/v1/pessoas/update/:id',
+  PessoasController.UpdateValidation,
+  PessoasController.UpdatePessoas
+);
+routes.delete(
+  '/api/v1/pessoas/delete/:id',
+  PessoasController.DeleteValidation,
+  PessoasController.DeletePessoas
+);
 
 export { routes };

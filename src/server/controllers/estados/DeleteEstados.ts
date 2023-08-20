@@ -29,7 +29,7 @@ export const DeleteEstados = async (
   const result = await EstadosProvider.DeleteEstados(req.params.id);
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });

@@ -1,31 +1,23 @@
 import { Request, Response } from 'express';
 import { EstadosProvider } from '../../database/providers/estados';
 import { StatusCodes } from 'http-status-codes';
-import { IEstado } from '../../database/models/Estado';
 import * as yup from 'yup';
 import { validation } from '../../shared/middleware';
+import { PessoasProvider } from '../../database/providers/pessoas';
 
 interface IParamProps {
   id?: number;
 }
-interface IBodyProps extends Omit<IEstado, 'id'> {}
-
-export const UpdateValidation = validation((getSchema) => ({
+export const GetByIdValidation = validation((getSchema) => ({
   params: getSchema<IParamProps>(
     yup.object().shape({
-      id: yup.number().integer().optional().moreThan(0),
-    })
-  ),
-  body: getSchema<IBodyProps>(
-    yup.object().shape({
-      nome: yup.string().required().min(3),
-      uf: yup.string().required().length(2),
+      id: yup.number().required().integer().moreThan(0),
     })
   ),
 }));
 
-export const UpdateEstados = async (
-  req: Request<IParamProps, {}, IBodyProps>,
+export const GetByIdPessoas = async (
+  req: Request<IParamProps>,
   res: Response
 ) => {
   if (!req.params.id) {
@@ -35,7 +27,7 @@ export const UpdateEstados = async (
       },
     });
   }
-  const result = await EstadosProvider.UpdateEstados(req.params.id, req.body);
+  const result = await PessoasProvider.GetByIdPessoas(req.params.id);
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {

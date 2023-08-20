@@ -30,7 +30,7 @@ export const DeleteCidades = async (
   const result = await CidadesProvider.DeleteCidades(req.params.id);
   if (result instanceof Error)
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });

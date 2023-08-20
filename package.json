@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc",
     "preproduction": "tsc",
@@ -18,11 +18,15 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
     "@types/http-status-codes": "^1.2.0",
+    "@types/jest": "^29.5.3",
+    "@types/supertest": "^2.0.12",
     "@types/yup": "^0.32.0",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "dotenv": "^16.3.1",
     "eslint": "^8.47.0",
+    "jest": "^29.6.2",
+    "ts-jest": "^29.1.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.6"
   },
@@ -30,5 +34,8 @@
     "express": "^4.18.2",
     "http-status-codes": "^2.2.0",
     "yup": "^1.2.0"
+  },"engines": {
+    "node": "18.x"
   }
+  
 }

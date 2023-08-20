@@ -7,13 +7,6 @@ import { validation } from '../../shared/middleware';
 interface IParamProps {
   id?: number;
 }
-export const getByIdValidation = validation((getSchema) => ({
-  params: getSchema<IParamProps>(
-    yup.object().shape({
-      id: yup.number().integer().optional().moreThan(0),
-    })
-  ),
-}));
 export const GetByIdValidation = validation((getSchema) => ({
   params: getSchema<IParamProps>(
     yup.object().shape({
@@ -36,7 +29,7 @@ export const GetByIdEstados = async (
   const result = await EstadosProvider.GetByIdEstados(req.params.id);
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });

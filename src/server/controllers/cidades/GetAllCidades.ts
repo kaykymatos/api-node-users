@@ -9,7 +9,7 @@ export const GetAllCidades = async ( req: Request, res: Response) => {
   const result = await CidadesProvider.GetAllCidades();
   if (result instanceof Error)
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });
