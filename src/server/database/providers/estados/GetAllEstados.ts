@@ -3,11 +3,12 @@ import { IEstado } from '../../models/Estado';
 
 export const GetAllEstados = async (): Promise<IEstado[] | Error> => {
   try {
-    const listCidade = await PrismaConfig.prisma.estado.findMany();
-    if (listCidade === null || listCidade === undefined) return [];
-    return listCidade;
+    const listEstado = await PrismaConfig.prisma.estado.findMany();
+    if (listEstado === null || listEstado === undefined) return [];
+    return listEstado;
   } catch (error) {
     console.log(error);
     return new Error('Erro ao consultar registros');
   }
 };
+

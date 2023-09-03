@@ -6,14 +6,13 @@ export const UpdateEstados = async (
   estado: Omit<IEstado, 'id'>
 ): Promise<void | Error> => {
   try {
-    const updateCidade = await PrismaConfig.prisma.estado.update({
+    const updateEstado = await PrismaConfig.prisma.estado.update({
       where: {
         id: Number(id),
       },
       data: estado,
     });
-    console.log(id);
-    if (updateCidade.id === null || updateCidade.id === undefined || updateCidade.id === 0)
+    if (updateEstado.id === null || updateEstado.id === undefined || updateEstado.id === 0)
       return new Error('Erro ao tentar atualizar registro');
     return;
   } catch (error) {
