@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { EstadosController } from '../controllers/estados';
 import { CidadesController } from '../controllers/cidades';
 import { PessoasController } from '../controllers/pessoas';
+import { UsuariosController } from '../controllers/usuario';
 
 const routes = Router();
 //Estados
@@ -71,6 +72,20 @@ routes.delete(
   '/api/v1/pessoas/delete/:id',
   PessoasController.DeleteValidation,
   PessoasController.DeletePessoas
+);
+
+//Usuarios
+
+routes.post(
+  '/api/v1/usuarios/signin',
+  UsuariosController.CreateValidation,
+  UsuariosController.Signin
+);
+
+routes.post(
+  '/api/v1/usuarios/signup',
+  UsuariosController.CreateValidation,
+  UsuariosController.SignUp
 );
 
 export { routes };
