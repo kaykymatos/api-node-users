@@ -15,4 +15,3 @@ export const DeleteEstados = async (id: number): Promise<void | Error> => {
     return new Error('Erro ao deletar registro');
   }
 };
-

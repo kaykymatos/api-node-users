@@ -32,9 +32,9 @@ model Usuario {
 }
 
 model Pessoa {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  senha     String
-  cidade    Cidades @relation(fields: [cidadesId], references: [id])
-  cidadesId Int
+  id       Int     @id @default(autoincrement())
+  nome     String
+  email    String  @unique
+  cidade   Cidades @relation(fields: [cidadeId], references: [id])
+  cidadeId Int
 }

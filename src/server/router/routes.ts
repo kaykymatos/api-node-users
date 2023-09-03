@@ -27,7 +27,6 @@ routes.delete(
   EstadosController.DeleteEstados
 );
 
-
 //Cidades
 routes.get('/api/v1/cidades/get-all', CidadesController.GetAllCidades);
 routes.get(
@@ -50,8 +49,6 @@ routes.delete(
   CidadesController.DeleteValidation,
   CidadesController.DeleteCidades
 );
-
-
 
 //Pessoas
 routes.get('/api/v1/pessoas/get-all', PessoasController.GetAllPessoas);

@@ -11,4 +11,3 @@ export const GetAllEstados = async (): Promise<IEstado[] | Error> => {
     return new Error('Erro ao consultar registros');
   }
 };
-

@@ -12,7 +12,11 @@ export const UpdateEstados = async (
       },
       data: estado,
     });
-    if (updateEstado.id === null || updateEstado.id === undefined || updateEstado.id === 0)
+    if (
+      updateEstado.id === null ||
+      updateEstado.id === undefined ||
+      updateEstado.id === 0
+    )
       return new Error('Erro ao tentar atualizar registro');
     return;
   } catch (error) {
@@ -20,4 +24,3 @@ export const UpdateEstados = async (
     return new Error('Erro ao atualizar registro');
   }
 };
-

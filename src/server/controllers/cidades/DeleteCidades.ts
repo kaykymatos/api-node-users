@@ -36,4 +36,3 @@ export const DeleteCidades = async (
     });
   return res.status(StatusCodes.NO_CONTENT).json(result);
 };
-

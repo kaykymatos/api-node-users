@@ -1,3 +1,4 @@
+import { PrismaConfig } from '../../../shared/config/PrismaConfig';
 import { IPessoa } from '../../models/Pessoa';
 
 export const UpdatePessoas = async (
@@ -5,6 +6,18 @@ export const UpdatePessoas = async (
   pessoa: Omit<IPessoa, 'id'>
 ): Promise<void | Error> => {
   try {
+    const updateEstado = await PrismaConfig.prisma.pessoa.update({
+      where: {
+        id: Number(id),
+      },
+      data: pessoa,
+    });
+    if (
+      updateEstado.id === null ||
+      updateEstado.id === undefined ||
+      updateEstado.id === 0
+    )
+      return new Error('Erro ao tentar atualizar registro');
     return;
   } catch (error) {
     console.log(error);

@@ -1,7 +1,9 @@
 import { PrismaConfig } from '../../../shared/config/PrismaConfig';
 import { IEstado } from '../../models/Estado';
 
-export const CreateEstados = async (estado: Omit<IEstado, 'id'>): Promise<number | Error> => {
+export const CreateEstados = async (
+  estado: Omit<IEstado, 'id'>
+): Promise<number | Error> => {
   try {
     const createEstado = await PrismaConfig.prisma.estado.create({
       data: {
@@ -21,4 +23,3 @@ export const CreateEstados = async (estado: Omit<IEstado, 'id'>): Promise<number
     return new Error('Erro ao cadastrar registro');
   }
 };
-

@@ -12,7 +12,11 @@ export const UpdateCidades = async (
       },
       data: cidade,
     });
-    if (updateCidade.id === null || updateCidade.id === undefined || updateCidade.id === 0)
+    if (
+      updateCidade.id === null ||
+      updateCidade.id === undefined ||
+      updateCidade.id === 0
+    )
       return new Error('Erro ao tentar atualizar registro');
     return;
   } catch (error) {

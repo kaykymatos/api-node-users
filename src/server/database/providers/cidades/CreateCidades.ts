@@ -7,8 +7,8 @@ export const CreateCidades = async (
   try {
     const createCidade = await PrismaConfig.prisma.cidades.create({
       data: {
-        nome:cidade.nome,
-        estadoId:cidade.estadoId
+        nome: cidade.nome,
+        estadoId: cidade.estadoId,
       },
     });
     if (

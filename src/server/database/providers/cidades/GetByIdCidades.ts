@@ -9,7 +9,8 @@ export const GetByIdCidades = async (id: number): Promise<ICidade | Error> => {
       },
     });
     console.log(id);
-    if (getCidade == null || getCidade == undefined) return new Error('Cadastro não encontrado!');
+    if (getCidade == null || getCidade == undefined)
+      return new Error('Cadastro não encontrado!');
     return getCidade;
   } catch (error) {
     console.log(error);

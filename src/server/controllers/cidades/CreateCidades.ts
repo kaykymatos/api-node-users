@@ -16,7 +16,10 @@ export const CreateValidation = validation((getSchema) => ({
   ),
 }));
 
-export const CreateCidades = async (req: Request<{}, {}, IBodyProps, {}, {}>,res: Response) => {
+export const CreateCidades = async (
+  req: Request<{}, {}, IBodyProps, {}, {}>,
+  res: Response
+) => {
   const result = await CidadesProvider.CreateCidades(req.body);
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
