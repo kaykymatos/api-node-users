@@ -5,6 +5,7 @@ import { Request, Response } from 'express';
 import { UsuariosProvider } from '../../database/providers/usuarios';
 import { StatusCodes } from 'http-status-codes';
 import { PasswordCrypto } from '../../shared/middleware/PasswordCrypto';
+import { JWTService } from '../../shared/services/JWTServices';
 
 interface IBodyProps extends Omit<IUsuario, 'id'|'nome'> {}
 export const CreateValidation = validation((getSchema) => ({
@@ -39,8 +40,14 @@ export const Signin = async (
       },
     });
   } else {
-    const accessToken = '123123213213123211';
-   
+    const accessToken = JWTService.sign({uid:usuario.id});
+    if (accessToken === 'JWT_SECRETNOT_FOUND') {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        errors: {
+          default: 'Erro ao gerar o tokn de acesso!',
+        },
+      });
+    }
     return res.status(StatusCodes.OK).json({ accessToken: accessToken });
   }
 };
