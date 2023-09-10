@@ -10,7 +10,7 @@ export const validationBodySignUp = validation((getSchema) => ({
   body: getSchema<IBodyProps>(
     yup.object().shape({
       nome: yup.string().required().min(3),
-      email: yup.string().email().required().min(5),
+      email: yup.string().email().required().min(3),
       senha: yup.string().required().min(6),
     })
   ),

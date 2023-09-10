@@ -109,7 +109,7 @@ routes.post(
 
 routes.post(
   '/api/v1/usuarios/signup',
-  UsuariosController.CreateValidation,
+  UsuariosController.validationBodySignUp,
   UsuariosController.SignUp
 );
 
