@@ -6,11 +6,7 @@ export const CreatePessoas = async (
 ): Promise<number | Error> => {
   try {
     const createEstado = await prisma.pessoa.create({
-      data: {
-        email: pessoa.email,
-        nome: pessoa.nome,
-        cidadeId: pessoa.cidadeId,
-      },
+      data: pessoa,
     });
     if (
       createEstado.id === null ||
@@ -24,3 +20,4 @@ export const CreatePessoas = async (
     return new Error('Erro ao cadastrar registro');
   }
 };
+
