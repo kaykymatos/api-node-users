@@ -7,7 +7,6 @@
     "test": "jest",
     "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc",
-    "preproduction": "tsc",
     "production": "node ./build/index.js",
     "clean": "npx prettier ./src --write",
     "prisma:migrate": "npx prisma migrate dev --name",
