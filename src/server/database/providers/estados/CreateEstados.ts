@@ -1,11 +1,11 @@
-import { PrismaConfig } from '../../../shared/config/PrismaConfig';
+import { prisma } from '../../../shared/config/PrismaConfig';
 import { IEstado } from '../../models/Estado';
 
 export const CreateEstados = async (
   estado: Omit<IEstado, 'id'>
 ): Promise<number | Error> => {
   try {
-    const createEstado = await PrismaConfig.prisma.estado.create({
+    const createEstado = await prisma.estado.create({
       data: {
         nome: estado.nome,
         uf: estado.uf,

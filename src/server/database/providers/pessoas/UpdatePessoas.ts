@@ -1,4 +1,4 @@
-import { PrismaConfig } from '../../../shared/config/PrismaConfig';
+import { prisma } from '../../../shared/config/PrismaConfig';
 import { IPessoa } from '../../models/Pessoa';
 
 export const UpdatePessoas = async (
@@ -6,7 +6,7 @@ export const UpdatePessoas = async (
   pessoa: Omit<IPessoa, 'id'>
 ): Promise<void | Error> => {
   try {
-    const updateEstado = await PrismaConfig.prisma.pessoa.update({
+    const updateEstado = await prisma.pessoa.update({
       where: {
         id: Number(id),
       },

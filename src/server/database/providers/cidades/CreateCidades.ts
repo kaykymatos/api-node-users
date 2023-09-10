@@ -1,11 +1,11 @@
-import { PrismaConfig } from '../../../shared/config/PrismaConfig';
+import { prisma } from '../../../shared/config/PrismaConfig';
 import { ICidade } from '../../models/Cidade';
 
 export const CreateCidades = async (
   cidade: Omit<ICidade, 'id'>
 ): Promise<number | Error> => {
   try {
-    const createCidade = await PrismaConfig.prisma.cidades.create({
+    const createCidade = await prisma.cidades.create({
       data: {
         nome: cidade.nome,
         estadoId: cidade.estadoId,

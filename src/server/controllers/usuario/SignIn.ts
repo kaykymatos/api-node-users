@@ -7,7 +7,7 @@ import { StatusCodes } from 'http-status-codes';
 import { PasswordCrypto } from '../../shared/middleware/PasswordCrypto';
 import { JWTService } from '../../shared/services/JWTServices';
 
-interface IBodyProps extends Omit<IUsuario, 'id'|'nome'> {}
+interface IBodyProps extends Omit<IUsuario, 'id' | 'nome'> {}
 export const CreateValidation = validation((getSchema) => ({
   body: getSchema<IBodyProps>(
     yup.object().shape({
@@ -40,7 +40,7 @@ export const Signin = async (
       },
     });
   } else {
-    const accessToken = JWTService.sign({uid:usuario.id});
+    const accessToken = JWTService.sign({ uid: usuario.id });
     if (accessToken === 'JWT_SECRETNOT_FOUND') {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
         errors: {

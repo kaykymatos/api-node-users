@@ -1,9 +1,9 @@
-import { PrismaConfig } from '../../../shared/config/PrismaConfig';
+import { prisma } from '../../../shared/config/PrismaConfig';
 import { IPessoa } from '../../models/Pessoa';
 
 export const GetByIdPessoas = async (id: number): Promise<IPessoa | Error> => {
   try {
-    const getEstado = await PrismaConfig.prisma.pessoa.findFirst({
+    const getEstado = await prisma.pessoa.findFirst({
       where: {
         id: Number(id),
       },

@@ -1,4 +1,4 @@
-import { PrismaConfig } from '../../../shared/config/PrismaConfig';
+import { prisma } from '../../../shared/config/PrismaConfig';
 import { PasswordCrypto } from '../../../shared/middleware/PasswordCrypto';
 import { IUsuario } from '../../models/Usuario';
 
@@ -7,8 +7,8 @@ export const CreateUsuarios = async (
 ): Promise<number | Error> => {
   try {
     const hashedPassword = await PasswordCrypto.hashPassword(usuario.senha);
-    const usuarioInsert = await PrismaConfig.prisma.usuario.create({
-      data: {...usuario,senha:hashedPassword},
+    const usuarioInsert = await prisma.usuario.create({
+      data: { ...usuario, senha: hashedPassword },
     });
     if (
       usuarioInsert === null ||
@@ -23,4 +23,3 @@ export const CreateUsuarios = async (
     return new Error('Erro ao cadastrar registro');
   }
 };
-

@@ -1,8 +1,8 @@
-import { PrismaConfig } from '../../../shared/config/PrismaConfig';
+import { prisma } from '../../../shared/config/PrismaConfig';
 
 export const DeleteCidades = async (id: number): Promise<void | Error> => {
   try {
-    const deleteCidade = await PrismaConfig.prisma.cidades.delete({
+    const deleteCidade = await prisma.cidades.delete({
       where: {
         id: Number(id),
       },

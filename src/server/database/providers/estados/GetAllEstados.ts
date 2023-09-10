@@ -1,9 +1,9 @@
-import { PrismaConfig } from '../../../shared/config/PrismaConfig';
+import { prisma } from '../../../shared/config/PrismaConfig';
 import { IEstado } from '../../models/Estado';
 
 export const GetAllEstados = async (): Promise<IEstado[] | Error> => {
   try {
-    const listEstado = await PrismaConfig.prisma.estado.findMany();
+    const listEstado = await prisma.estado.findMany();
     if (listEstado === null || listEstado === undefined) return [];
     return listEstado;
   } catch (error) {

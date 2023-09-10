@@ -1,9 +1,9 @@
-import { PrismaConfig } from '../../../shared/config/PrismaConfig';
+import { prisma } from '../../../shared/config/PrismaConfig';
 import { IUsuario } from '../../models/Usuario';
 
 export const GetByEmail = async (email: string): Promise<IUsuario | Error> => {
   try {
-    const usuario = await PrismaConfig.prisma.usuario.findFirst({
+    const usuario = await prisma.usuario.findFirst({
       where: {
         email: email,
       },
@@ -15,4 +15,3 @@ export const GetByEmail = async (email: string): Promise<IUsuario | Error> => {
     return new Error('Erro ao consultar o registro');
   }
 };
-

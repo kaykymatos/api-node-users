@@ -1,7 +1,7 @@
 import { IUsuario } from '../../database/models/Usuario';
 import { validation } from '../../shared/middleware';
 import * as yup from 'yup';
-import {Response,Request} from 'express';
+import { Response, Request } from 'express';
 import { UsuariosProvider } from '../../database/providers/usuarios';
 import { StatusCodes } from 'http-status-codes';
 
@@ -29,4 +29,3 @@ export const SignUp = async (
   }
   return res.status(StatusCodes.CREATED).json(result);
 };
-
