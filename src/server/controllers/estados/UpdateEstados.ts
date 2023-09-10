@@ -36,7 +36,12 @@ export const UpdateEstados = async (
     });
   }
   const result = await EstadosProvider.UpdateEstados(req.params.id, req.body);
-  if (result instanceof Error)
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json();
-  return res.status(StatusCodes.OK).json();
+  if (result instanceof Error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors: {
+        default: result.message,
+      },
+    });
+  }
+  return res.status(StatusCodes.OK).json(result);
 };

@@ -1,3 +1,4 @@
+import { prisma } from '../../../shared/config/PrismaConfig';
 import { IEstado } from '../../models/Estado';
 
 export const UpdateEstados = async (
@@ -5,9 +6,21 @@ export const UpdateEstados = async (
   estado: Omit<IEstado, 'id'>
 ): Promise<void | Error> => {
   try {
+    const updateEstado = await prisma.estado.update({
+      where: {
+        id: Number(id),
+      },
+      data: estado,
+    });
+    if (
+      updateEstado.id === null ||
+      updateEstado.id === undefined ||
+      updateEstado.id === 0
+    )
+      return new Error('Erro ao tentar atualizar registro');
     return;
   } catch (error) {
     console.log(error);
-    return new Error('Erro ao cadastrar registro');
+    return new Error('Erro ao atualizar registro');
   }
 };

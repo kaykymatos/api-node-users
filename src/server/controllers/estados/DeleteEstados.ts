@@ -4,7 +4,6 @@ import { StatusCodes } from 'http-status-codes';
 import { validation } from '../../shared/middleware';
 import * as yup from 'yup';
 
-
 interface IParamProps {
   id?: number;
 }
@@ -20,7 +19,7 @@ export const DeleteEstados = async (
   req: Request<IParamProps>,
   res: Response
 ) => {
-  if(!req.params.id){
+  if (!req.params.id) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       errors: {
         default: 'O parametro "Id" precisa ser maior que 0!',
@@ -28,8 +27,12 @@ export const DeleteEstados = async (
     });
   }
   const result = await EstadosProvider.DeleteEstados(req.params.id);
-  if (result instanceof Error)
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json();
-  return res.status(StatusCodes.NO_CONTENT).json();
+  if (result instanceof Error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors: {
+        default: result.message,
+      },
+    });
+  }
+  return res.status(StatusCodes.NO_CONTENT).json(result);
 };
-

@@ -1,10 +1,13 @@
+import { prisma } from '../../../shared/config/PrismaConfig';
 import { IEstado } from '../../models/Estado';
 
 export const GetAllEstados = async (): Promise<IEstado[] | Error> => {
   try {
-    return [];
+    const listEstado = await prisma.estado.findMany();
+    if (listEstado === null || listEstado === undefined) return [];
+    return listEstado;
   } catch (error) {
     console.log(error);
-    return new Error('Erro ao cadastrar registro');
+    return new Error('Erro ao consultar registros');
   }
 };

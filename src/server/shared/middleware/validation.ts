@@ -21,7 +21,9 @@ export const validation: TValidation =
 
     Object.entries(schemas).forEach(([key, schema]) => {
       try {
-        schema.validateSync(req[key as TProperty], { abortEarly: false });
+        schema.validateSync(req[key as TProperty], {
+          abortEarly: false,
+        });
       } catch (err) {
         const yupError = err as ValidationError;
         const errors: Record<string, string> = {};
@@ -40,4 +42,3 @@ export const validation: TValidation =
       return res.status(StatusCodes.BAD_REQUEST).json({ errors: errorsResult });
     }
   };
-
